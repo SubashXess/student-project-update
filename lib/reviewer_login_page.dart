@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:pmayg/Constants/ApiConstant.dart';
 import 'package:pmayg/Widgets/background.dart';
 import 'package:pmayg/Widgets/rounded_button_widget.dart';
+import 'package:pmayg/Widgets/show_snack_bar.dart';
 import 'package:pmayg/Widgets/textformfield_widget.dart';
 import 'package:pmayg/constants/ColorConstants.dart';
 import 'package:pmayg/dao/MySharedPreferences.dart';
 import 'package:pmayg/dashboard.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:pmayg/reviewer_dashboard.dart';
+import 'package:pmayg/reviewer_search_page.dart';
 
 class ReviewerLoginPage extends StatefulWidget {
   const ReviewerLoginPage({Key? key}) : super(key: key);
@@ -289,23 +293,30 @@ class _ReviewerLoginPageState extends State<ReviewerLoginPage> {
     print('MOB : $mobile');
     //String password=message['password'];
     if (p_reg == reg || p_mob == mobile) {
-      MySharedPreferences.instance.setStringValue("UID", id);
-      MySharedPreferences.instance.setStringValue("REG", reg);
-      MySharedPreferences.instance.setStringValue("MOB", mobile);
-      MySharedPreferences.instance.setStringValue("NAME", name);
-      MySharedPreferences.instance.setBooleanValue("loggedin", true);
-      MySharedPreferences.instance.setStringValue("usertype", user_type);
-      //Navigator.of(context).pushNamed('/dashboard_page');
-      // Hiding the CircularProgressIndicator.
+      if (user_type == 'v') {
+        MySharedPreferences.instance.setStringValue("UID", id);
+        MySharedPreferences.instance.setStringValue("REG", reg);
+        MySharedPreferences.instance.setStringValue("MOB", mobile);
+        MySharedPreferences.instance.setStringValue("NAME", name);
+        MySharedPreferences.instance.setBooleanValue("loggedin", true);
+        MySharedPreferences.instance.setStringValue("usertype", user_type);
+        //Navigator.of(context).pushNamed('/dashboard_page');
+        // Hiding the CircularProgressIndicator.
 
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => DashboardPage()));
-      setState(() {
-        visible = false;
-      });
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const ReviewerSearchPage()));
+        setState(() {
+          visible = false;
+        });
+      }
+      // else {
+      // ignore: use_build_context_synchronously
+      showSnackBar(context, 'You are not authorized to view this page');
+      // }
     } else {
       // If Email or Password did not Matched.
       // Hiding the CircularProgressIndicator.
+
       setState(() {
         visible = false;
       });
