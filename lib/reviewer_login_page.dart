@@ -1,120 +1,49 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:pmayg/Constants/ApiConstant.dart';
 import 'package:pmayg/Widgets/background.dart';
+import 'package:pmayg/Widgets/rounded_button_widget.dart';
+import 'package:pmayg/Widgets/textformfield_widget.dart';
+import 'package:pmayg/constants/ColorConstants.dart';
+import 'package:pmayg/dao/MySharedPreferences.dart';
 import 'package:pmayg/dashboard.dart';
-import 'package:pmayg/verify_page.dart';
-
-import 'Constants/ApiConstant.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-import 'Constants/ColorConstants.dart';
-import 'MySharedPreferences.dart';
-import 'Validators/textformfield_validation.dart';
-import 'Widgets/rounded_button_widget.dart';
-import 'Widgets/textformfield_widget.dart';
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ReviewerLoginPage extends StatefulWidget {
+  const ReviewerLoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ReviewerLoginPage> createState() => _ReviewerLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ReviewerLoginPageState extends State<ReviewerLoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _registrationController = TextEditingController();
-  final TextEditingController _mobileController = TextEditingController();
+  TextEditingController _regController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
 
   bool _isHidePassword = true;
   bool visible = false;
   @override
   void initState() {
-    _mobileController.addListener(onListen);
+    _phoneController.addListener(onListen);
+    _regController.addListener(onListen);
     super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _registrationController.dispose();
-    _mobileController.removeListener(onListen);
-    _mobileController.dispose();
+    _regController.removeListener(onListen);
+    _regController.dispose();
+    _phoneController.removeListener(onListen);
+    _phoneController.dispose();
   }
 
   void onListen() {
     setState(() {});
-  }
-
-  Future userLogin() async {
-    // Showing CircularProgressIndicator.
-    setState(() {
-      visible = true;
-    });
-    String p_reg = _registrationController.text;
-    String p_mob = _mobileController.text;
-    // print('Email : $email Password : $password');
-    // SERVER LOGIN API URL
-    var url = ApiConstant.api1 + 'login.php';
-    var response = await http.post(Uri.parse(url), body: {
-      "reg_id": p_reg,
-      "mobile": p_mob,
-    });
-    // Getting Server response into variable.
-    print(response.body.toString());
-    var message = jsonDecode(response.body);
-    String id = message[0]['user_id'];
-    String reg = message[0]['reg_id'];
-    String name = message[0]['name'];
-    String mobile = message[0]['mobile'];
-    String user_type = message[0]['user_type'];
-    //String password=message[0]['password'];
-    print('MOB : ' + mobile);
-    //String password=message['password'];
-    if (p_reg == reg || p_mob == mobile) {
-      MySharedPreferences.instance.setStringValue("UID", id);
-      MySharedPreferences.instance.setStringValue("REG", reg);
-      MySharedPreferences.instance.setStringValue("MOB", mobile);
-      MySharedPreferences.instance.setStringValue("NAME", name);
-      MySharedPreferences.instance.setBooleanValue("loggedin", true);
-      MySharedPreferences.instance.setStringValue("usertype", user_type);
-      //Navigator.of(context).pushNamed('/dashboard_page');
-      // Hiding the CircularProgressIndicator.
-
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => DashboardPage()));
-      setState(() {
-        visible = false;
-      });
-    } else {
-      // If Email or Password did not Matched.
-      // Hiding the CircularProgressIndicator.
-      setState(() {
-        visible = false;
-      });
-
-      // Showing Alert Dialog with Response JSON Message.
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: new Text(message["message"]),
-            actions: <Widget>[
-              TextButton(
-                child: new Text("OK"),
-                onPressed: () {
-                  Navigator.of(context, rootNavigator: true).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
   }
 
   @override
@@ -136,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
           //   ),
           // ),
           title: const Text(
-            'Beneficiary Login',
+            'Reviewer Login',
             style: TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 18,
@@ -248,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextFormFieldWidget(
-                              controller: _registrationController,
+                              controller: _regController,
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               label: "Registration ID",
@@ -275,7 +204,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             SizedBox(height: size.height * 0.012),
                             TextFormFieldWidget(
-                              controller: _mobileController,
+                              controller: _phoneController,
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               label: "Mobile No",
@@ -334,9 +263,70 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  togglePasswordVisibility() {
+  Future userLogin() async {
+    // Showing CircularProgressIndicator.
     setState(() {
-      _isHidePassword = !_isHidePassword;
+      visible = true;
     });
+    String p_reg = _regController.text;
+    String p_mob = _phoneController.text;
+    // print('Email : $email Password : $password');
+    // SERVER LOGIN API URL
+    var url = '${ApiConstant.api1}login.php';
+    var response = await http.post(Uri.parse(url), body: {
+      "reg_id": p_reg,
+      "mobile": p_mob,
+    });
+    // Getting Server response into variable.
+    print(response.body.toString());
+    var message = jsonDecode(response.body);
+    String id = message[0]['user_id'];
+    String reg = message[0]['reg_id'];
+    String name = message[0]['name'];
+    String mobile = message[0]['mobile'];
+    String user_type = message[0]['user_type'];
+    //String password=message[0]['password'];
+    print('MOB : $mobile');
+    //String password=message['password'];
+    if (p_reg == reg || p_mob == mobile) {
+      MySharedPreferences.instance.setStringValue("UID", id);
+      MySharedPreferences.instance.setStringValue("REG", reg);
+      MySharedPreferences.instance.setStringValue("MOB", mobile);
+      MySharedPreferences.instance.setStringValue("NAME", name);
+      MySharedPreferences.instance.setBooleanValue("loggedin", true);
+      MySharedPreferences.instance.setStringValue("usertype", user_type);
+      //Navigator.of(context).pushNamed('/dashboard_page');
+      // Hiding the CircularProgressIndicator.
+
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => DashboardPage()));
+      setState(() {
+        visible = false;
+      });
+    } else {
+      // If Email or Password did not Matched.
+      // Hiding the CircularProgressIndicator.
+      setState(() {
+        visible = false;
+      });
+
+      // Showing Alert Dialog with Response JSON Message.
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(message["message"]),
+            actions: <Widget>[
+              TextButton(
+                child: const Text("OK"),
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }

@@ -6,10 +6,12 @@ import 'package:pmayg/constants/ColorConstants.dart';
 import 'package:pmayg/fullscreen_preview_image.dart';
 
 class ImagePreviewScreen extends StatefulWidget {
-  const ImagePreviewScreen({Key? key, required this.appbartitle})
+  const ImagePreviewScreen(
+      {Key? key, required this.appbartitle, required this.ratingShow})
       : super(key: key);
 
   final String appbartitle;
+  final bool ratingShow;
 
   @override
   State<ImagePreviewScreen> createState() => _ImagePreviewScreenState();
@@ -97,24 +99,26 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              RatingBar.builder(
-                itemSize: 20,
-                initialRating: 0,
-                minRating: 0,
-                allowHalfRating: false,
-                itemCount: 5,
-                glowColor: ColorConstants.kPrimaryColor,
-                unratedColor: ColorConstants.kPrimaryLightColor2,
-                itemBuilder: (context, index) {
-                  return const Icon(
-                    Icons.star,
-                    color: ColorConstants.kPrimaryColor,
-                  );
-                },
-                onRatingUpdate: (rating) {
-                  print(rating);
-                },
-              ),
+              widget.ratingShow == true
+                  ? RatingBar.builder(
+                      itemSize: 20,
+                      initialRating: 0,
+                      minRating: 0,
+                      allowHalfRating: false,
+                      itemCount: 5,
+                      glowColor: ColorConstants.kPrimaryColor,
+                      unratedColor: ColorConstants.kPrimaryLightColor2,
+                      itemBuilder: (context, index) {
+                        return const Icon(
+                          Icons.star,
+                          color: ColorConstants.kPrimaryColor,
+                        );
+                      },
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    )
+                  : Container(),
               SizedBox(height: size.height * 0.02),
               const Text(
                 'Image Preview Two',
@@ -173,24 +177,26 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              RatingBar.builder(
-                itemSize: 20,
-                initialRating: 0,
-                minRating: 0,
-                allowHalfRating: false,
-                itemCount: 5,
-                glowColor: ColorConstants.kPrimaryColor,
-                unratedColor: ColorConstants.kPrimaryLightColor2,
-                itemBuilder: (context, index) {
-                  return const Icon(
-                    Icons.star,
-                    color: ColorConstants.kPrimaryColor,
-                  );
-                },
-                onRatingUpdate: (rating) {
-                  print(rating);
-                },
-              ),
+              widget.ratingShow == true
+                  ? RatingBar.builder(
+                      itemSize: 20,
+                      initialRating: 0,
+                      minRating: 0,
+                      allowHalfRating: false,
+                      itemCount: 5,
+                      glowColor: ColorConstants.kPrimaryColor,
+                      unratedColor: ColorConstants.kPrimaryLightColor2,
+                      itemBuilder: (context, index) {
+                        return const Icon(
+                          Icons.star,
+                          color: ColorConstants.kPrimaryColor,
+                        );
+                      },
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    )
+                  : Container(),
               SizedBox(height: size.height * 0.02),
               const Text(
                 'Image Preview Three',
@@ -249,24 +255,26 @@ class _ImagePreviewScreenState extends State<ImagePreviewScreen> {
                 ),
               ),
               const SizedBox(height: 10),
-              RatingBar.builder(
-                itemSize: 20,
-                initialRating: 0,
-                minRating: 0,
-                allowHalfRating: false,
-                itemCount: 5,
-                glowColor: ColorConstants.kPrimaryColor,
-                unratedColor: ColorConstants.kPrimaryLightColor2,
-                itemBuilder: (context, index) {
-                  return const Icon(
-                    Icons.star,
-                    color: ColorConstants.kPrimaryColor,
-                  );
-                },
-                onRatingUpdate: (rating) {
-                  print(rating);
-                },
-              ),
+              widget.ratingShow == true
+                  ? RatingBar.builder(
+                      itemSize: 20,
+                      initialRating: 0,
+                      minRating: 0,
+                      allowHalfRating: false,
+                      itemCount: 5,
+                      glowColor: ColorConstants.kPrimaryColor,
+                      unratedColor: ColorConstants.kPrimaryLightColor2,
+                      itemBuilder: (context, index) {
+                        return const Icon(
+                          Icons.star,
+                          color: ColorConstants.kPrimaryColor,
+                        );
+                      },
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    )
+                  : Container(),
               // const Text(
               //   'Image Preview Two',
               //   style: TextStyle(

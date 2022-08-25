@@ -5,6 +5,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pmayg/image_preview_screen.dart';
+import 'package:pmayg/reviewer_dashboard.dart';
+import 'package:pmayg/reviewer_search_page.dart';
 import 'package:pmayg/user_type.dart';
 import 'package:pmayg/verify_page.dart';
 
@@ -111,14 +113,16 @@ class _DashboardPageState extends State<DashboardPage>
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        ImagePreviewScreen(appbartitle: '${p_name} View'),
+                    builder: (context) => ImagePreviewScreen(
+                      appbartitle: '${p_name} View',
+                      ratingShow: false,
+                    ),
                   ),
                 );
                 null;
                 final snackBar = SnackBar(
                   content: Text('$p_name completed!'),
-                  duration: Duration(seconds: 5),
+                  duration: const Duration(seconds: 5),
                   action: SnackBarAction(
                     label: '',
                     onPressed: () {
@@ -128,7 +132,7 @@ class _DashboardPageState extends State<DashboardPage>
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.check,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
@@ -136,7 +140,7 @@ class _DashboardPageState extends State<DashboardPage>
               label: Text(
                 // p_name!,
                 '$p_name View',
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -147,7 +151,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -189,14 +193,14 @@ class _DashboardPageState extends State<DashboardPage>
                       builder: (context) => VerifyPage(status, p_name)),
                 );
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock_open,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
               ), //icon data for elevated button
               label: Text(
                 p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -207,7 +211,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -274,14 +278,16 @@ class _DashboardPageState extends State<DashboardPage>
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        ImagePreviewScreen(appbartitle: '${p_name} View'),
+                    builder: (context) => ImagePreviewScreen(
+                      appbartitle: '$p_name View',
+                      ratingShow: false,
+                    ),
                   ),
                 );
                 null;
                 final snackBar = SnackBar(
-                  content: Text('${p_name} completed!'),
-                  duration: Duration(seconds: 5),
+                  content: Text('$p_name completed!'),
+                  duration: const Duration(seconds: 5),
                   action: SnackBarAction(
                     label: '',
                     onPressed: () {
@@ -291,7 +297,7 @@ class _DashboardPageState extends State<DashboardPage>
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.check,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
@@ -299,7 +305,7 @@ class _DashboardPageState extends State<DashboardPage>
               label: Text(
                 '$p_name View',
                 // p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -310,7 +316,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -341,9 +347,9 @@ class _DashboardPageState extends State<DashboardPage>
               onPressed: () {
                 null;
                 final snackBar = SnackBar(
-                  content: Text(
+                  content: const Text(
                       'Before proceed Phase Two, complete Phase One First!'),
-                  duration: Duration(seconds: 5),
+                  duration: const Duration(seconds: 5),
                   action: SnackBarAction(
                     label: '',
                     onPressed: () {
@@ -353,14 +359,14 @@ class _DashboardPageState extends State<DashboardPage>
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
               ), //icon data for elevated button
               label: Text(
                 p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -371,7 +377,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -406,14 +412,14 @@ class _DashboardPageState extends State<DashboardPage>
                       builder: (context) => VerifyPage(status, p_name)),
                 );
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock_open,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
               ), //icon data for elevated button
               label: Text(
                 p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -424,7 +430,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -459,14 +465,14 @@ class _DashboardPageState extends State<DashboardPage>
                       builder: (context) => VerifyPage(status, p_name)),
                 );
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
               ), //icon data for elevated button
               label: Text(
                 p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -477,7 +483,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -514,14 +520,16 @@ class _DashboardPageState extends State<DashboardPage>
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        ImagePreviewScreen(appbartitle: '${p_name} View'),
+                    builder: (context) => ImagePreviewScreen(
+                      appbartitle: '$p_name View',
+                      ratingShow: false,
+                    ),
                   ),
                 );
                 null;
                 final snackBar = SnackBar(
-                  content: Text(p_name! + ' completed!'),
-                  duration: Duration(seconds: 5),
+                  content: Text('${p_name!} completed!'),
+                  duration: const Duration(seconds: 5),
                   action: SnackBarAction(
                     label: '',
                     onPressed: () {
@@ -531,7 +539,7 @@ class _DashboardPageState extends State<DashboardPage>
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.check,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
@@ -539,7 +547,7 @@ class _DashboardPageState extends State<DashboardPage>
               label: Text(
                 // p_name!,
                 '$p_name View',
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -550,7 +558,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -581,9 +589,9 @@ class _DashboardPageState extends State<DashboardPage>
               onPressed: () {
                 null;
                 final snackBar = SnackBar(
-                  content: Text(
+                  content: const Text(
                       'Before proceed Phase Three, complete Phase Two First!'),
-                  duration: Duration(seconds: 5),
+                  duration: const Duration(seconds: 5),
                   action: SnackBarAction(
                     label: '',
                     onPressed: () {
@@ -593,14 +601,14 @@ class _DashboardPageState extends State<DashboardPage>
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
               ), //icon data for elevated button
               label: Text(
                 p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -611,7 +619,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -646,14 +654,14 @@ class _DashboardPageState extends State<DashboardPage>
                       builder: (context) => VerifyPage(status, p_name)),
                 );
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock_open,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
               ), //icon data for elevated button
               label: Text(
                 p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -664,7 +672,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -699,14 +707,14 @@ class _DashboardPageState extends State<DashboardPage>
                       builder: (context) => VerifyPage(status, p_name)),
                 );
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock,
                 size: 20,
                 color: ColorConstants.kPrimaryColor,
               ), //icon data for elevated button
               label: Text(
                 p_name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.italic,
                   fontFamily: 'Roboto',
                   fontSize: 18,
@@ -717,7 +725,7 @@ class _DashboardPageState extends State<DashboardPage>
                 ),
               ), //label text
               style: ElevatedButton.styleFrom(
-                side: BorderSide(
+                side: const BorderSide(
                   width: 3.0,
                   color: ColorConstants.kPrimaryColor,
                 ),
@@ -744,7 +752,7 @@ class _DashboardPageState extends State<DashboardPage>
   showAlertDialog(BuildContext context, String desc) {
     // Create button
     Widget okButton = TextButton(
-      child: Text("OK"),
+      child: const Text("OK"),
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -752,7 +760,7 @@ class _DashboardPageState extends State<DashboardPage>
 
     AlertDialog alert = AlertDialog(
         backgroundColor: ColorConstants.kPrimaryUltraLightColor,
-        title: Text(desc, style: TextStyle(fontSize: 18)),
+        title: Text(desc, style: const TextStyle(fontSize: 18)),
         //content: Text("Before come to Phase Two Please complete Phase One."),
         actions: [
           okButton,
@@ -881,7 +889,7 @@ class _DashboardPageState extends State<DashboardPage>
           actions: [
             PopupMenuButton(
               itemBuilder: (BuildContext bc) => [
-                PopupMenuItem(child: Text("Logout"), value: 0),
+                const PopupMenuItem(child: const Text("Logout"), value: 0),
                 // PopupMenuItem(
                 //     child: Text("New Group Chat"), value: "/new-group-chat"),
                 //PopupMenuItem(child: Text("Settings"), value: "/settings"),
@@ -912,10 +920,10 @@ class _DashboardPageState extends State<DashboardPage>
                   margin: const EdgeInsets.only(top: 20),
                   width: 200,
                   height: 200,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: new AssetImage("assets/images/image-8.jpeg"),
+                        image: AssetImage("assets/images/image-8.jpeg"),
                         fit: BoxFit.fill),
                   ),
                 ),
@@ -927,11 +935,11 @@ class _DashboardPageState extends State<DashboardPage>
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     setElevetedButton1('1', 'Phase One'),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     setElevetedButton2('2', 'Phase Two'),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     setElevetedButton3('3', 'Phase Three')
@@ -1078,253 +1086,254 @@ class _DashboardPageState extends State<DashboardPage>
         ),
       );
     } else {
-      return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          title: Container(
-            margin: const EdgeInsets.only(top: 10, bottom: 10),
-            child: Column(
-              children: [
-                // Text('Beneficiary ',
-                //   style: const TextStyle(
-                //       fontFamily: 'Roboto',
-                //       fontSize: 20,
-                //       color: ColorConstants.kPrimaryColor,
-                //       fontWeight: FontWeight.w700,
-                //       fontStyle: FontStyle.italic
-                //   ),
-                //   textAlign: TextAlign.center,
-                // ),
-                Text(
-                  name.toString(),
-                  style: const TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 18,
-                      color: ColorConstants.kPrimaryUltraLightColor,
-                      fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.italic),
-                  textAlign: TextAlign.center,
-                ),
-                // const SizedBox(
-                //   height: 5,
-                // ),
-                Text(
-                  '( Mob : $mobile )',
-                  style: const TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 16,
-                      color: ColorConstants.kPrimaryUltraLightColor,
-                      fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.italic),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-          backgroundColor: ColorConstants.kPrimaryColor,
-          centerTitle: true,
-          actions: [
-            PopupMenuButton(
-              itemBuilder: (BuildContext bc) => [
-                PopupMenuItem(child: Text("Logout"), value: 0),
-                // PopupMenuItem(
-                //     child: Text("New Group Chat"), value: "/new-group-chat"),
-                //PopupMenuItem(child: Text("Settings"), value: "/settings"),
-              ],
-              onSelected: (route) {
-                if (route == 0) {
-                  logoutUser();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => UserType()),
-                  );
-                }
-              },
-            ),
-          ],
-        ),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/login.jpg'),
-              fit: BoxFit.contain,
-            ),
-          ),
-          child: ListView(
-            children: [
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: new AssetImage("assets/images/image-8.jpeg"),
-                        fit: BoxFit.fill),
-                  ),
-                ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text('data'),
-                    setElevetedButton1('1', 'Phase One'),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    setElevetedButton2('2', 'Phase Two'),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    setElevetedButton3('3', 'Phase Three')
-                  ],
-                ),
-              ),
-              // Container(
-              //   alignment: Alignment.center,
-              // margin: const EdgeInsets.only(top: 100),
-              // child:Column(
-              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //     children:<Widget>[
-              //       GestureDetector(
-              //         onTap: () async {
-              //           // setState(() {
-              //           //   showLoading = true;
-              //           // });
-              //           Navigator.push(
-              //             context,
-              //             MaterialPageRoute(builder: (context) => VerifyPage('Phase One')),
-              //           );
-              //         },
-              //         child:Container(
-              //           height: 70,
-              //           width: 165,
-              //           margin: const EdgeInsets.only(left: 10,right: 10),
-              //           decoration: BoxDecoration(
-              //             border: Border.all(
-              //               color: Colors.black,
-              //             ),
-              //             borderRadius: BorderRadius.only(
-              //                 topRight: Radius.circular(10.0),
-              //                 bottomRight: Radius.circular(10.0),
-              //                 topLeft: Radius.circular(10),
-              //                 bottomLeft: Radius.circular(10)
-              //             ),
-              //             color: Colors.white,
-              //           ),
-              //           child: const Center(
-              //             child:Text("Phase One",style: TextStyle(
-              //               fontStyle: FontStyle.italic,
-              //               fontFamily: 'Roboto',
-              //               fontSize: 18,
-              //               // color: const Color(0xff17278d),
-              //               //color: Colors.deepPurple,
-              //               color: Colors.black,
-              //               fontWeight: FontWeight.w500,
-              //             ),
-              //               textAlign: TextAlign.center,
-              //             ),
-              //           ),
-              //         ),),
-              //        SizedBox(
-              //         height: 20,
-              //       ),
-              //       GestureDetector(
-              //         onTap: () async {
-              //           Navigator.push(
-              //             context,
-              //             MaterialPageRoute(builder: (context) => VerifyPage('Phase Two')),
-              //           );
-              //         },
-              //         child:Container(
-              //           height: 70,
-              //           width: 165,
-              //           margin: const EdgeInsets.only(left:10,right: 10),
-              //           decoration: BoxDecoration(
-              //             border: Border.all(
-              //               color: Colors.black,
-              //             ),
-              //             color:  Colors.white,
-              //             borderRadius: const BorderRadius.only(
-              //                 topRight: const Radius.circular(10.0),
-              //                 bottomRight: Radius.circular(10.0),
-              //                 topLeft: const Radius.circular(10),
-              //                 bottomLeft: const Radius.circular(10)
-              //             ),
-              //           ),
-              //           child: const Center(
-              //             // Column(
-              //             //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //             //   crossAxisAlignment: CrossAxisAlignment.start,
-              //             //   children: [])
-              //             child:const Text("Phase Two",style: TextStyle(
-              //               fontStyle: FontStyle.italic,
-              //               fontFamily: 'Roboto',
-              //               fontSize: 18,
-              //               // color: const Color(0xff17278d),
-              //               //color: Colors.deepPurple,
-              //               color: Colors.black,
-              //               fontWeight: FontWeight.w500,
-              //             ),
-              //               textAlign: TextAlign.center,
-              //             ),),
-              //         ),),
-              //       SizedBox(
-              //         height: 20,
-              //       ),
-              //       GestureDetector(
-              //         onTap: () async {
-              //           Navigator.push(
-              //             context,
-              //             MaterialPageRoute(builder: (context) =>VerifyPage('Phase Three')),
-              //           );
-              //         },
-              //         child:Container(
-              //           height: 70,
-              //           width: 165,
-              //           margin: const EdgeInsets.only(left:10,right: 10),
-              //           decoration: BoxDecoration(
-              //             border: Border.all(
-              //               color: Colors.black,
-              //             ),
-              //             color:  Colors.white,
-              //             borderRadius: const BorderRadius.only(
-              //                 topRight: const Radius.circular(10.0),
-              //                 bottomRight: Radius.circular(10.0),
-              //                 topLeft: const Radius.circular(10),
-              //                 bottomLeft: const Radius.circular(10)
-              //             ),
-              //           ),
-              //           child: const Center(
-              //             // Column(
-              //             //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //             //   crossAxisAlignment: CrossAxisAlignment.start,
-              //             //   children: [])
-              //             child:const Text("Phase Three",style: TextStyle(
-              //               fontStyle: FontStyle.italic,
-              //               fontFamily: 'Roboto',
-              //               fontSize: 18,
-              //               // color: const Color(0xff17278d),
-              //               //color: Colors.deepPurple,
-              //               color: Colors.black,
-              //               fontWeight: FontWeight.w500,
-              //             ),
-              //               textAlign: TextAlign.center,
-              //             ),),
-              //         ),),
-              //     ]
-              // ),
-              // ),
-            ],
-          ),
-        ),
-      );
+      return const ReviewerSearchPage();
+      // return Scaffold(
+      //   resizeToAvoidBottomInset: false,
+      //   appBar: AppBar(
+      //     automaticallyImplyLeading: false,
+      //     elevation: 0,
+      //     title: Container(
+      //       margin: const EdgeInsets.only(top: 10, bottom: 10),
+      //       child: Column(
+      //         children: [
+      //           // Text('Beneficiary ',
+      //           //   style: const TextStyle(
+      //           //       fontFamily: 'Roboto',
+      //           //       fontSize: 20,
+      //           //       color: ColorConstants.kPrimaryColor,
+      //           //       fontWeight: FontWeight.w700,
+      //           //       fontStyle: FontStyle.italic
+      //           //   ),
+      //           //   textAlign: TextAlign.center,
+      //           // ),
+      //           Text(
+      //             name.toString(),
+      //             style: const TextStyle(
+      //                 fontFamily: 'Roboto',
+      //                 fontSize: 18,
+      //                 color: ColorConstants.kPrimaryUltraLightColor,
+      //                 fontWeight: FontWeight.w700,
+      //                 fontStyle: FontStyle.italic),
+      //             textAlign: TextAlign.center,
+      //           ),
+      //           // const SizedBox(
+      //           //   height: 5,
+      //           // ),
+      //           Text(
+      //             '( Mob : $mobile )',
+      //             style: const TextStyle(
+      //                 fontFamily: 'Roboto',
+      //                 fontSize: 16,
+      //                 color: ColorConstants.kPrimaryUltraLightColor,
+      //                 fontWeight: FontWeight.w700,
+      //                 fontStyle: FontStyle.italic),
+      //             textAlign: TextAlign.center,
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //     backgroundColor: ColorConstants.kPrimaryColor,
+      //     centerTitle: true,
+      //     actions: [
+      //       PopupMenuButton(
+      //         itemBuilder: (BuildContext bc) => [
+      //           const PopupMenuItem(child: const Text("Logout"), value: 0),
+      //           // PopupMenuItem(
+      //           //     child: Text("New Group Chat"), value: "/new-group-chat"),
+      //           //PopupMenuItem(child: Text("Settings"), value: "/settings"),
+      //         ],
+      //         onSelected: (route) {
+      //           if (route == 0) {
+      //             logoutUser();
+      //             Navigator.push(
+      //               context,
+      //               MaterialPageRoute(builder: (context) => UserType()),
+      //             );
+      //           }
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      //   body: Container(
+      //     decoration: const BoxDecoration(
+      //       image: DecorationImage(
+      //         image: AssetImage('assets/images/login.jpg'),
+      //         fit: BoxFit.contain,
+      //       ),
+      //     ),
+      //     child: ListView(
+      //       children: [
+      //         Center(
+      //           child: Container(
+      //             margin: const EdgeInsets.only(top: 20),
+      //             width: 200,
+      //             height: 200,
+      //             decoration: BoxDecoration(
+      //               shape: BoxShape.circle,
+      //               image: DecorationImage(
+      //                   image: new AssetImage("assets/images/image-8.jpeg"),
+      //                   fit: BoxFit.fill),
+      //             ),
+      //           ),
+      //         ),
+      //         Container(
+      //           alignment: Alignment.center,
+      //           margin: const EdgeInsets.symmetric(horizontal: 16.0),
+      //           child: Column(
+      //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //             children: <Widget>[
+      //               const Text('data'),
+      //               setElevetedButton1('1', 'Phase One'),
+      //               const SizedBox(
+      //                 height: 20,
+      //               ),
+      //               setElevetedButton2('2', 'Phase Two'),
+      //               const SizedBox(
+      //                 height: 20,
+      //               ),
+      //               setElevetedButton3('3', 'Phase Three')
+      //             ],
+      //           ),
+      //         ),
+      //         // Container(
+      //         //   alignment: Alignment.center,
+      //         // margin: const EdgeInsets.only(top: 100),
+      //         // child:Column(
+      //         //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //         //     children:<Widget>[
+      //         //       GestureDetector(
+      //         //         onTap: () async {
+      //         //           // setState(() {
+      //         //           //   showLoading = true;
+      //         //           // });
+      //         //           Navigator.push(
+      //         //             context,
+      //         //             MaterialPageRoute(builder: (context) => VerifyPage('Phase One')),
+      //         //           );
+      //         //         },
+      //         //         child:Container(
+      //         //           height: 70,
+      //         //           width: 165,
+      //         //           margin: const EdgeInsets.only(left: 10,right: 10),
+      //         //           decoration: BoxDecoration(
+      //         //             border: Border.all(
+      //         //               color: Colors.black,
+      //         //             ),
+      //         //             borderRadius: BorderRadius.only(
+      //         //                 topRight: Radius.circular(10.0),
+      //         //                 bottomRight: Radius.circular(10.0),
+      //         //                 topLeft: Radius.circular(10),
+      //         //                 bottomLeft: Radius.circular(10)
+      //         //             ),
+      //         //             color: Colors.white,
+      //         //           ),
+      //         //           child: const Center(
+      //         //             child:Text("Phase One",style: TextStyle(
+      //         //               fontStyle: FontStyle.italic,
+      //         //               fontFamily: 'Roboto',
+      //         //               fontSize: 18,
+      //         //               // color: const Color(0xff17278d),
+      //         //               //color: Colors.deepPurple,
+      //         //               color: Colors.black,
+      //         //               fontWeight: FontWeight.w500,
+      //         //             ),
+      //         //               textAlign: TextAlign.center,
+      //         //             ),
+      //         //           ),
+      //         //         ),),
+      //         //        SizedBox(
+      //         //         height: 20,
+      //         //       ),
+      //         //       GestureDetector(
+      //         //         onTap: () async {
+      //         //           Navigator.push(
+      //         //             context,
+      //         //             MaterialPageRoute(builder: (context) => VerifyPage('Phase Two')),
+      //         //           );
+      //         //         },
+      //         //         child:Container(
+      //         //           height: 70,
+      //         //           width: 165,
+      //         //           margin: const EdgeInsets.only(left:10,right: 10),
+      //         //           decoration: BoxDecoration(
+      //         //             border: Border.all(
+      //         //               color: Colors.black,
+      //         //             ),
+      //         //             color:  Colors.white,
+      //         //             borderRadius: const BorderRadius.only(
+      //         //                 topRight: const Radius.circular(10.0),
+      //         //                 bottomRight: Radius.circular(10.0),
+      //         //                 topLeft: const Radius.circular(10),
+      //         //                 bottomLeft: const Radius.circular(10)
+      //         //             ),
+      //         //           ),
+      //         //           child: const Center(
+      //         //             // Column(
+      //         //             //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //         //             //   crossAxisAlignment: CrossAxisAlignment.start,
+      //         //             //   children: [])
+      //         //             child:const Text("Phase Two",style: TextStyle(
+      //         //               fontStyle: FontStyle.italic,
+      //         //               fontFamily: 'Roboto',
+      //         //               fontSize: 18,
+      //         //               // color: const Color(0xff17278d),
+      //         //               //color: Colors.deepPurple,
+      //         //               color: Colors.black,
+      //         //               fontWeight: FontWeight.w500,
+      //         //             ),
+      //         //               textAlign: TextAlign.center,
+      //         //             ),),
+      //         //         ),),
+      //         //       SizedBox(
+      //         //         height: 20,
+      //         //       ),
+      //         //       GestureDetector(
+      //         //         onTap: () async {
+      //         //           Navigator.push(
+      //         //             context,
+      //         //             MaterialPageRoute(builder: (context) =>VerifyPage('Phase Three')),
+      //         //           );
+      //         //         },
+      //         //         child:Container(
+      //         //           height: 70,
+      //         //           width: 165,
+      //         //           margin: const EdgeInsets.only(left:10,right: 10),
+      //         //           decoration: BoxDecoration(
+      //         //             border: Border.all(
+      //         //               color: Colors.black,
+      //         //             ),
+      //         //             color:  Colors.white,
+      //         //             borderRadius: const BorderRadius.only(
+      //         //                 topRight: const Radius.circular(10.0),
+      //         //                 bottomRight: Radius.circular(10.0),
+      //         //                 topLeft: const Radius.circular(10),
+      //         //                 bottomLeft: const Radius.circular(10)
+      //         //             ),
+      //         //           ),
+      //         //           child: const Center(
+      //         //             // Column(
+      //         //             //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //         //             //   crossAxisAlignment: CrossAxisAlignment.start,
+      //         //             //   children: [])
+      //         //             child:const Text("Phase Three",style: TextStyle(
+      //         //               fontStyle: FontStyle.italic,
+      //         //               fontFamily: 'Roboto',
+      //         //               fontSize: 18,
+      //         //               // color: const Color(0xff17278d),
+      //         //               //color: Colors.deepPurple,
+      //         //               color: Colors.black,
+      //         //               fontWeight: FontWeight.w500,
+      //         //             ),
+      //         //               textAlign: TextAlign.center,
+      //         //             ),),
+      //         //         ),),
+      //         //     ]
+      //         // ),
+      //         // ),
+      //       ],
+      //     ),
+      //   ),
+      // );
     }
   }
 }

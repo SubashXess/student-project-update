@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pmayg/dashboard.dart';
+import 'package:pmayg/reviewer_login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'MySharedPreferences.dart';
@@ -69,10 +70,10 @@ class _UserTypeState extends State<UserType> {
         Container(
           width: 200,
           height: 200,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-                image: new AssetImage("assets/images/image-8.jpeg"),
+                image: AssetImage("assets/images/image-8.jpeg"),
                 fit: BoxFit.fill),
           ),
         ),
@@ -127,7 +128,7 @@ class _UserTypeState extends State<UserType> {
               GestureDetector(
                 onTap: () async {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const LoginPage()));
+                      MaterialPageRoute(builder: (_) => const ReviewerLoginPage()));
                   // Navigator.pushAndRemoveUntil(
                   //     context,
                   //     MaterialPageRoute(
@@ -148,18 +149,18 @@ class _UserTypeState extends State<UserType> {
                   margin: const EdgeInsets.only(right: 10),
                   decoration: const BoxDecoration(
                     color: ColorConstants.kPrimaryColor,
-                    borderRadius: const BorderRadius.only(
-                        topRight: const Radius.circular(10.0),
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(10.0),
                         bottomRight: Radius.circular(10.0),
-                        topLeft: const Radius.circular(10),
-                        bottomLeft: const Radius.circular(10)),
+                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10)),
                   ),
                   child: const Center(
                     // Column(
                     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
                     //   crossAxisAlignment: CrossAxisAlignment.start,
                     //   children: [])
-                    child: const Text(
+                    child: Text(
                       "Reviewer Login",
                       style: TextStyle(
                         fontStyle: FontStyle.italic,
@@ -201,9 +202,9 @@ class _UserTypeState extends State<UserType> {
             padding: const EdgeInsets.only(left: 10, right: 10),
             decoration: const BoxDecoration(
               color: ColorConstants.kPrimaryColor,
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10.0),
-                  bottomRight: const Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
                   topLeft: Radius.circular(10),
                   bottomLeft: Radius.circular(10)),
             ),
@@ -212,7 +213,7 @@ class _UserTypeState extends State<UserType> {
               //   mainAxisAlignment: MainAxisAlignment.spaceAround,
               //   crossAxisAlignment: CrossAxisAlignment.start,
               //   children: [])
-              child: const Text(
+              child: Text(
                 "Guidelines for PMAY-G",
                 style: TextStyle(
                   fontStyle: FontStyle.italic,

@@ -9,15 +9,15 @@ class TextFormFieldWidget extends StatelessWidget {
   final Color bgColor;
   final Color borderColor;
   final Function(String?) onChanged;
-  //final String Function(String?) validator;
+  final String? Function(String?)? validator;
   final AutovalidateMode autovalidateMode;
   //final Widget suffixIcon;
   final TextInputType inputType;
   const TextFormFieldWidget({
     Key? key,
-     required this.controller,
+    required this.controller,
     this.obscureText = false,
-     required this.label,
+    required this.label,
     required this.labelColor,
     required this.bgColor,
     required this.borderColor,
@@ -25,7 +25,8 @@ class TextFormFieldWidget extends StatelessWidget {
     //required this.validator,
     required this.autovalidateMode,
     //required this.suffixIcon,
-    required this.inputType
+    required this.inputType,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -46,21 +47,21 @@ class TextFormFieldWidget extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: ColorConstants.kPrimaryUltraLightColor,
               width: 1.0,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: ColorConstants.kPrimaryUltraLightColor,
               width: 1.0,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
-            borderSide:  BorderSide(
+            borderSide: const BorderSide(
               color: ColorConstants.kPrimaryLightColor1,
               width: 1.0,
             ),
@@ -79,10 +80,11 @@ class TextFormFieldWidget extends StatelessWidget {
               width: 1.0,
             ),
           ),
-          floatingLabelStyle: const TextStyle(color: ColorConstants.kPrimaryColor),
+          floatingLabelStyle:
+              const TextStyle(color: ColorConstants.kPrimaryColor),
           //suffixIcon: suffixIcon,
         ),
-        //validator: validator,
+        validator: validator,
         onChanged: onChanged,
       ),
     );

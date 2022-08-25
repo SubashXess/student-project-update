@@ -10,6 +10,7 @@ class TextFieldValidation {
       return null;
     }
   }
+
   static String? userMobileValidation(String? mobileNo) {
     if (mobileNo == null || mobileNo.isEmpty) {
       return "Required";
@@ -19,6 +20,7 @@ class TextFieldValidation {
       return null;
     }
   }
+
   static String? passwordValidation(String? password) {
     if (password == null || password.isEmpty) {
       return "Required";
